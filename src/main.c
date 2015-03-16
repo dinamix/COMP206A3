@@ -3,7 +3,7 @@
 #include "list.h"
 
 int main() {
-	NODE firstnode = {0,11};
-	printf("%d\n",firstnode.value);
+	LINKEDLIST list = createList(20);
+	printf("%d\n",list.firstnode.nextnode);
 	return EXIT_SUCCESS;
 }

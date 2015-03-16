@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "list.h"
 
 LINKEDLIST createList(int nvalue) {
