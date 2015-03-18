@@ -1,3 +1,3 @@
 # COMP206A3
 # GITHUB REPO BELOW:
-github.com/dinamix/COMP206A3ODE 
+github.com/dinamix/COMP206A3 
