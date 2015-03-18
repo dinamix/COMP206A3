@@ -23,23 +23,21 @@ int main() {
 		printf("Nothing found in file.\n");
 		return EXIT_SUCCESS;
 	}
-
-	//Initialize linkedlist with first int
-	int initial;
-	fscanf(file,"%d",&initial);	
-	LINKEDLIST list = createList(initial);
+	
+	/*Initialize list
+	int initint;
+	fscanf(file,"%d",&initint);
+	init(initint);
+	*/
 
 	//Continue to take input till EOF
 	int nextint;
 	fscanf(file,"%d",&nextint);
 	while(!feof(file)) {
-		addNode(&list,nextint);
+		add(nextint);
 		fscanf(file,"%d",&nextint);
-		//TEST
-		//printf("lol %d\n",nextint);
-		//TEST
 	}
-	prettyPrint(&list);
+	prettyPrint();
 	fclose(file);
 	//printf("%d\n",list.tail->value);
 	return EXIT_SUCCESS;
