@@ -21,3 +21,9 @@ void add(int);
 *as given file with ints
 **/
 void prettyPrint();
+
+/**
+*Removes node with given int value
+*if not found, then returns FALSE
+**/
+BOOLEAN delete(int);

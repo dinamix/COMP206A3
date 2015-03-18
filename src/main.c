@@ -17,18 +17,6 @@ int main() {
 		scanf("%s",filename);
 		file = fopen(filename,"r");
 	}while(filenotfound(file));
-	
-	//Check if file has something in it
-	if(filenull(filename)) {
-		printf("Nothing found in file.\n");
-		return EXIT_SUCCESS;
-	}
-	
-	/*Initialize list
-	int initint;
-	fscanf(file,"%d",&initint);
-	init(initint);
-	*/
 
 	//Continue to take input till EOF
 	int nextint;
@@ -37,9 +25,14 @@ int main() {
 		add(nextint);
 		fscanf(file,"%d",&nextint);
 	}
+
+	//Print out values in list in order
+	prettyPrint();
+	
+	delete(26);
+
 	prettyPrint();
 	fclose(file);
-	//printf("%d\n",list.tail->value);
 	return EXIT_SUCCESS;
 }
 
@@ -49,23 +42,4 @@ int main() {
 BOOLEAN filenotfound(FILE *fp) {
 	if(fp == 0) return TRUE;
 	else return FALSE;
-}
-
-/**
-*This function checks if EOF is second char
-*and ensure first char is not a digit
-*If so, it returns that the file contains nothing
-**/
-BOOLEAN filenull(char filename[ARRAY_SIZE]) {
-	FILE *testfile;
-	testfile = fopen(filename,"r");
-	char test = getc(testfile);
-	if(feof(testfile) && !isdigit(test)) {
-		fclose(testfile);
-		return TRUE;
-	}
-	else {
-		fclose(testfile);
-		return FALSE;
-	}
 }

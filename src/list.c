@@ -69,9 +69,64 @@ void printNode(NODE* point) {
 void prettyPrint() {
 	NODE *point = aNode;
 	if(point != NULL) {
+		printf("Current list : \n");
 		printNode(point);
+		printf("\n");
 	}
 	else {
-		printf("List is empty.");
+		printf("List/File is empty.\n");
+	}
+}
+
+/**
+*This function returns node that is removed
+*In order to keep track of nodes
+*node is removed within find function
+**/
+NODE* find(int dvalue) {
+	//Find value to remove
+	NODE *point = aNode;
+	if(point->value == dvalue) {
+		return point;
+	}
+	while(point->nextnode->value != dvalue) {
+		point = point->nextnode;
+		if(point == NULL) {
+			return NULL;
+		}
+	}
+	//Return removed node
+	return point->nextnode;
+}
+
+/**
+*This function actually removes node
+*Mainly used to find previous node
+**/
+void removeNode(NODE* dnode) {
+	NODE *findnode = aNode;
+	if(findnode == dnode) {
+		aNode = findnode->nextnode;
+	}
+	else {
+		while(findnode->nextnode != dnode) {
+			findnode = findnode->nextnode;
+		}
+		NODE *remove = findnode->nextnode;
+		findnode->nextnode = remove->nextnode;
+	}	
+}
+
+/**
+*Finds and removes given value node
+**/
+BOOLEAN delete(int dvalue) {
+	NODE *look = find(dvalue);
+	if(look != NULL) {
+		removeNode(look);
+		return TRUE;
+	}
+	else {
+		return FALSE;
 	}
 }
