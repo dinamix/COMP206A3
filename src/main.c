@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include "list.h"
 
 #define ARRAY_SIZE 100
 
-int filenotfound(FILE*);
-int filenull(char[]);
+BOOLEAN filenotfound(FILE*);
+BOOLEAN filenull(char[]);
 
 int main() {
 	//Create and initialize file
@@ -41,21 +42,26 @@ int main() {
 /**
 *This function ensures that the file exists
 **/
-int filenotfound(FILE *fp) {
-	if(fp == 0) return 1;
-	else return 0;
+BOOLEAN filenotfound(FILE *fp) {
+	if(fp == 0) return TRUE;
+	else return FALSE;
 }
 
-int filenull(char filename[ARRAY_SIZE]) {
+/**
+*This function checks if EOF is second char
+*and ensure first char is not a digit
+*If so, it returns that the file contains nothing
+**/
+BOOLEAN filenull(char filename[ARRAY_SIZE]) {
 	FILE *testfile;
 	testfile = fopen(filename,"r");
-	getc(testfile);
-	if(feof(testfile)) {
+	char test = getc(testfile);
+	if(feof(testfile) && !isdigit(test)) {
 		fclose(testfile);
-		return 1;
+		return TRUE;
 	}
 	else {
 		fclose(testfile);
-		return 0;
+		return FALSE;
 	}
 }
