@@ -17,6 +17,8 @@ typedef struct NODE {
 *Initialized node to point to
 *the first node of the list and
 *maintain it throughout program
+*All functions point to this
+*when actually changing the list
 **/
 NODE *aNode;
 
@@ -74,7 +76,7 @@ void prettyPrint() {
 		printf("\n");
 	}
 	else {
-		printf("List/File is empty.\n");
+		printf("List is empty.\n\n");
 	}
 }
 
@@ -84,19 +86,24 @@ void prettyPrint() {
 *node is removed within find function
 **/
 NODE* find(int dvalue) {
-	//Find value to remove
 	NODE *point = aNode;
-	if(point->value == dvalue) {
-		return point;
+
+	//This is for if trying to remove
+	//a node from an empty list
+	//console will print "List is empty"
+	if(point == NULL) {
+		return NULL;
 	}
-	while(point->nextnode->value != dvalue) {
+
+	//Find value to remove
+	while(point->value != dvalue) {
 		point = point->nextnode;
 		if(point == NULL) {
 			return NULL;
 		}
 	}
-	//Return removed node
-	return point->nextnode;
+	//Return remove node
+	return point;
 }
 
 /**
@@ -105,9 +112,11 @@ NODE* find(int dvalue) {
 **/
 void removeNode(NODE* dnode) {
 	NODE *findnode = aNode;
+	//This case is for removing first node
 	if(findnode == dnode) {
 		aNode = findnode->nextnode;
 	}
+	//This case is for removing other nodes
 	else {
 		while(findnode->nextnode != dnode) {
 			findnode = findnode->nextnode;
