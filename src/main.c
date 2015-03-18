@@ -10,7 +10,7 @@ BOOLEAN isYes(char[]);
 void printRemove(BOOLEAN);
 
 //TRISTANO TENAGLIA 260479800
-//Git Repo URL can be found in README.md
+//Git Repo URL : github.com/dinamix/COMP206A3 
 int main() {
 	//Create and initialize file
 	FILE *file;
