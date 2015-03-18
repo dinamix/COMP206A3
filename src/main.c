@@ -31,11 +31,17 @@ int main() {
 
 	//Continue to take input till EOF
 	int nextint;
+	fscanf(file,"%d",&nextint);
 	while(!feof(file)) {
-		fscanf(file,"%d",&nextint);
 		addNode(&list,nextint);
+		fscanf(file,"%d",&nextint);
+		//TEST
+		//printf("lol %d\n",nextint);
+		//TEST
 	}
-	printf("%d\n",list.tail->value);
+	prettyPrint(&list);
+	fclose(file);
+	//printf("%d\n",list.tail->value);
 	return EXIT_SUCCESS;
 }
 

@@ -43,3 +43,9 @@ LINKEDLIST createList(int);
 *with appropriate index and value
 **/
 void addNode(LINKEDLIST*,int);
+
+/**
+*Prints linked list in same format
+*as given file with ints
+**/
+void prettyPrint(LINKEDLIST*);
