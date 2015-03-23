@@ -24,7 +24,7 @@ NODE *aNode;
 
 /**
 *This function initializes *aNode
-*if it has not beein initialized yet
+*if it has not been initialized yet
 *or else it fills in the first nextnode->null
 *with the appropriate index and given value
 **/
@@ -123,6 +123,7 @@ void removeNode(NODE* dnode) {
 		}
 		NODE *remove = findnode->nextnode;
 		findnode->nextnode = remove->nextnode;
+		free(remove);
 	}	
 }
 

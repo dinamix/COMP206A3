@@ -73,6 +73,11 @@ BOOLEAN isYes(char *decision) {
 	else return FALSE;
 }
 
+/**
+*Outputs the appropriate message
+*depending on whether the element
+*is found in the linked list or not
+**/
 void printRemove(BOOLEAN check) {
 	if(check == TRUE) {
 		printf("NUMBER WAS DELETED\n");
